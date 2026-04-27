@@ -79,6 +79,7 @@ table {
 
 .form-group-input {
     width: 100%;
+    position: relative;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -120,5 +121,6 @@ table {
     flex-direction: row;
     justify-content: space-between;
     padding: 2px 0;
+    padding-bottom: 14px;
     align-items: center;
 }
