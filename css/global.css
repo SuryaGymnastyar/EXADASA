@@ -48,7 +48,6 @@ table {
 	border-spacing: 0;
 }
 
-/* ── Poppins Utilities ── */
 .poppins-light {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
@@ -78,11 +77,6 @@ table {
   font-weight: 700;
   font-style: normal;
 }
-
-
-/* ══════════════════════════════════════
-   LOGIN
-══════════════════════════════════════ */
 
 .container {
     width: 100%;
