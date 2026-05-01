@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $data["title"] ?></title>
     <link rel="stylesheet" href="<?=Constant::DIRNAME?>css/global.css">
+    <?php if(isset($data['css'])): ?>
+    <link rel="stylesheet" href="<?=Constant::DIRNAME?>css/<?=$data['css']?>.css">
+    <?php endif ?>
 
     <!-- ICON -->
     <link rel="stylesheet" type="text/css"
@@ -19,4 +22,7 @@
         rel="stylesheet">
 </head>
 <body>
+    <section class="wrapper">
+
+
     

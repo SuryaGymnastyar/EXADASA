@@ -3,8 +3,7 @@
 
 class App
 {
-	private string|object $class = "Dashboard",
-	$method = "index";
+	private string|object $class = "Home", $method = "index";
 	private array $params = [];
 	private array $protected = ['Dashboard', 'Profile'];
 
@@ -47,13 +46,14 @@ class App
 			$url = explode('/', $url);
 			return $url;
 		} else {
-			return ['Dashboard'];
+			return [$this->class];
 		}
 	}
 
 	public function authentication(string $halaman)
 	{
 		if (!isset($_SESSION['user']) && in_array($halaman, $this->protected)) {
+			echo "Anda harus login terlebih dahulu";
 			header('location: ' . Constant::DIRNAME . 'login');
 			exit;
 		}
