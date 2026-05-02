@@ -14,11 +14,13 @@
             <i class="ph ph-house" style="font-size: 20px;"></i>
             <p class="poppins-regular" style="font-size: 14px;">Dashboard</p>
         </a>
-        <a href="<?= Constant::DIRNAME ?>ujian" class="menu <?= $data["title"] == "ujian" ? "active" : "" ?>">
-            <i class="ph ph-clipboard-text" style="font-size: 20px;"></i>
-            <p class="poppins-regular" style="font-size: 14px;">Ujian Saya</p>
-        </a>
-        <a href="<?= Constant::DIRNAME ?>hasilUjian" class="menu <?= $data["title"] == "hasilUjian" ? "active" : ""?>">
+        <?php if ($_SESSION['user']['role'] == "siswa"): ?>
+            <a href="<?= Constant::DIRNAME ?>ujian" class="menu <?= $data["title"] == "Ujian" ? "active" : "" ?>">
+                <i class="ph ph-clipboard-text" style="font-size: 20px;"></i>
+                <p class="poppins-regular" style="font-size: 14px;">Ujian</p>
+            </a>
+        <?php endif; ?>
+        <a href="<?= Constant::DIRNAME ?>hasilUjian" class="menu <?= $data["title"] == "hasilUjian" ? "active" : "" ?>">
             <i class="ph ph-files" style="font-size: 20px;"></i>
             <p class="poppins-regular" style="font-size: 14px;">Hasil Ujian</p>
         </a>
@@ -27,8 +29,9 @@
             <p class="poppins-regular" style="font-size: 14px;">Profile</p>
         </a>
     </section>
-    <a href="<?= Constant::DIRNAME ?>login ?>" class="btn-logout">
+    <a href="<?= Constant::DIRNAME ?>dashboard/logout" class="btn-logout">
         <i class="ph ph-sign-out" style="font-size: 20px;"></i>
         <p class="poppins-regular" style="font-size: 14px;">Logout</p>
     </a>
 </aside>
+<main>

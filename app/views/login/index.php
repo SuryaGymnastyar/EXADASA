@@ -1,7 +1,7 @@
 <section class="auth">
     <section class="container left">
         <header>
-            <a href="#hero" style="all: inherit; cursor: pointer;">
+            <a href="<?= Constant::DIRNAME ?>" style="all: inherit; cursor: pointer;">
                 <i class="ph ph-graduation-cap bg-icon-primary" style="font-size: 20px; color: #fff;"></i>
                 <div class="title-group">
                     <h1 class="poppins-semibold">EduCBT</h1>

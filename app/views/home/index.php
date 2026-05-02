@@ -1,7 +1,7 @@
 <nav>
     <div class="container navbar">
         <section class="title">
-            <a href="#hero" style="all: inherit; cursor: pointer;">
+            <a href="<?= Constant::DIRNAME ?>" style="all: inherit; cursor: pointer;">
                 <i class="ph ph-graduation-cap bg-icon-primary" style="font-size: 20px; color: #fff;"></i>
                 <div class="title-group">
                     <h1 class="poppins-semibold">EduCBT</h1>
@@ -10,9 +10,9 @@
             </a>
         </section>
         <section class="menu">
-            <a href="#service">Fitur</a>
-            <a href="#service">Untuk Siapa</a>
-            <a href="">Mulai</a>
+            <a href="<?= Constant::DIRNAME ?>#service">Fitur</a>
+            <a href="<?= Constant::DIRNAME ?>#service">Untuk Siapa</a>
+            <a href="<?= Constant::DIRNAME ?>login">Mulai</a>
         </section>
         <section class="btn-menu">
             <a href="<?= Constant::DIRNAME ?>login" style="all: inherit; cursor: pointer;">

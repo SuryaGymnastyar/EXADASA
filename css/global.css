@@ -157,6 +157,21 @@ table {
   border-spacing: 0;
 }
 
+/* STYLE SCROLL */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+
 .poppins-light {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
@@ -210,6 +225,7 @@ table {
   border: none;
   transition: all 0.3s ease;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
 }
 
 .btn-primary:hover {
@@ -251,18 +267,21 @@ table {
 }
 
 .wrapper {
+  overflow: hidden;
   display: grid;
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   height: 100dvh;
 }
 
 .wrapper aside {
   background: #fff;
   padding: 20px 12px;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 30px;
   border-right: 1px solid #eaeaea;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -331,6 +350,79 @@ aside .btn-logout:hover {
   color: #fff;
 }
 
+.wrapper main {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.wrapper main nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 10px;
+  background: var(--color-muted);
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px);
+  transition: all 0.3s ease;
+  justify-content: space-between;
+}
+
+.wrapper main nav .input-navbar {
+  display: none;
+  flex: 2;
+  position: relative;
+  align-items: center;
+  gap: 10px;
+}
+
+.wrapper main nav .group-navbar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 25px;
+}
+
+.wrapper main nav .group-navbar .profil-navbar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.wrapper main nav .profil-navbar .img {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  border: 2px solid #eaeaea;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.wrapper main nav .group-navbar i {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.wrapper main nav .profil-navbar .title {
+  line-height: 16px;
+}
+
+.wrapper main nav .profil-navbar .title h2 {
+  font-size: 14px;
+}
+
+.wrapper main nav .profil-navbar .title p {
+  font-size: 10px;
+  color: var(--color-muted-foreground);
+}
+
 @media (width >= 640px) {
   .container {
     padding: 0 15px;
@@ -346,5 +438,21 @@ aside .btn-logout:hover {
 @media (width >= 1024px) {
   .container {
     padding: 0 35px;
+  }
+
+  .wrapper aside {
+    display: flex;
+  }
+
+  .wrapper {
+    grid-template-columns: 250px 1fr;
+  }
+
+  .wrapper main nav {
+    padding: 12px 30px;
+  }
+
+  .wrapper main nav .input-navbar {
+    display: flex;
   }
 }
