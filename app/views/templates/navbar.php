@@ -1,7 +1,7 @@
 <nav>
-    <div class="input-navbar">
-        <input type="text" name="search" id="search" placeholder="Cari disini..." class="input-primary poppins-regular" style="padding-left: 40px;">
-        <i class="ph ph-magnifying-glass" style="position: absolute; left: 12px; bottom: 12px; color: var(--color-muted-foreground);"></i>
+    <div class="input-navbar form-input">
+        <input type="text" name="search" id="search" placeholder="Cari disini..." style="padding-right: 40px;" class="poppins-regular">
+        <i class="ph ph-magnifying-glass"></i>
     </div>
     <div class="group-navbar">
         <i class="ph ph-bell"></i>

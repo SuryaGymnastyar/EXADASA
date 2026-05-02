@@ -1,13 +1,13 @@
 <?php
 
-class HasilUjian extends Controller {
+class Profile extends Controller {
     public function index() {
-        $data["title"] = "Hasil Ujian";
-        $data["css"] = "style.hasil.ujian";
+        $data["title"] = "Profile";
+        $data["css"] = "style.profile";
         $this->view('templates/header', $data);
         $this->view('templates/sidebar', $data);
         $this->view('templates/navbar', $data);
-        $this->view('hasilujian/index', $data);
+        $this->view('profile/index', $data);
         $this->view('templates/footer');
     }
 }

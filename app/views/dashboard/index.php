@@ -6,7 +6,7 @@
                 <h1 class="banner-user">Halo, M. Surya Gymnastyar</h1>
                 <p class="banner-description">Kamu punya <strong>2 ujian aktif</strong> minggu ini. Tetap fokus dan
                     semangat!</p>
-                <button class="btn-lihat-ujian">Lihat Ujian Saya &rarr;</button>
+                <button class="btn-lihat-ujian poppins-medium">Lihat Ujian Saya <i class="ph ph-arrow-right"></i></button>
             </div>
 
             <div class="banner-info">
@@ -124,34 +124,35 @@
             <div class="log-list">
                 <div class="log-item">
                     <div class="img">
-                        <span>A</span>
+                        <span>R</span>
                     </div>
                     <div>
-                        <h4 class="poppins-medium">Andi - <span>Login</span></h4>
+                        <h4 class="poppins-medium">Rafly - <span style="color: var(--color-primary); font-weight: 500; font-size: 13px;">Submit</span></h4>
                         <p>UAS Matematika</p>
                     </div>
                     <p class="poppins-regular" style="margin-left: auto;">2026-05-02 08:00</p>
                 </div>
                 <div class="log-item">
                     <div class="img">
-                        <span>A</span>
+                        <span>R</span>
                     </div>
                     <div>
-                        <h4 class="poppins-medium">Andi - <span>Login</span></h4>
-                        <p>UAS Matematika</p>
+                        <h4 class="poppins-medium">Rafly - <span style="color: var(--color-primary); font-weight: 500; font-size: 13px;">Login</span></h4>
+                        <p>Masuk ke dashboard</p>
                     </div>
                     <p class="poppins-regular" style="margin-left: auto;">2026-05-02 08:00</p>
                 </div>
                 <div class="log-item">
                     <div class="img">
-                        <span>A</span>
+                        <span>R</span>
                     </div>
                     <div>
-                        <h4 class="poppins-medium">Andi - <span>Login</span></h4>
-                        <p>UAS Matematika</p>
+                        <h4 class="poppins-medium">Rafly - <span style="color: var(--color-primary); font-weight: 500; font-size: 13px;">Submit</span></h4>
+                        <p>UAS IPA</p>
                     </div>
                     <p class="poppins-regular" style="margin-left: auto;">2026-05-02 08:00</p>
                 </div>
+                
             </div>
         </div>
     <?php endif; ?>

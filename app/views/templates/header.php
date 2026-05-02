@@ -23,4 +23,3 @@
         rel="stylesheet">
 </head>
 <body>
-    <section class="wrapper">

@@ -42,16 +42,14 @@
                 <p class="poppins-regular">Masukan username dan password anda</p>
             </header>
             <section class="input-group">
-                <div class="input-label">
+                <div class="form-input">
                     <label for="username" class="poppins-medium">Username</label>
-                    <input type="text" name="username" id="username" placeholder="Masukkan username..."
-                        style="border: 1px solid #eaeaea ;" class="input-primary poppins-regular">
+                    <input type="text" name="username" id="username" style="padding-right: 40px;" placeholder="Masukkan username..." class="poppins-regular">
                     <i class="ph ph-user"></i>
                 </div>
-                <div class="input-label">
+                <div class="form-input">
                     <label for="password" class="poppins-medium">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Masukkan password..."
-                        style="border: 1px solid #eaeaea ;" class="input-primary poppins-regular">
+                    <input type="password" name="password" id="password" style="padding-right: 40px;" placeholder="Masukkan password..." class="poppins-regular">
                     <i class="ph ph-eye"></i>
                 </div>
             </section>

@@ -237,18 +237,18 @@ table {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  background: var(--color-muted);
-  color: var(--color-foreground);
+  background: rgba(217, 219, 222, 0.2);
+  color: var(--color-muted-foreground);
   border: 1px solid var(--color-muted-foreground);
   padding: 10px 20px;
   border-radius: 10px;
   transition: all 0.3s ease;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
 }
 
 .btn-secondary:hover {
-  background: var(--color-muted-foreground);
-  color: #fff;
+  background-color: rgba(217, 219, 222, 0.8);
 }
 
 .input-primary {
@@ -375,11 +375,9 @@ aside .btn-logout:hover {
 }
 
 .wrapper main nav .input-navbar {
+  position: relative;
   display: none;
   flex: 2;
-  position: relative;
-  align-items: center;
-  gap: 10px;
 }
 
 .wrapper main nav .group-navbar {
@@ -423,6 +421,51 @@ aside .btn-logout:hover {
   color: var(--color-muted-foreground);
 }
 
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.form-input label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.form-input input {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  font-size: 0.9rem;
+  color: #1e293b;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.form-input input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.form-input input:disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.form-input i {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  font-size: 18px;
+  color: var(--color-muted-foreground);
+}
+
 @media (width >= 640px) {
   .container {
     padding: 0 15px;
@@ -453,6 +496,6 @@ aside .btn-logout:hover {
   }
 
   .wrapper main nav .input-navbar {
-    display: flex;
+    display: block;
   }
 }
