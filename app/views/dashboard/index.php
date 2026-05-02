@@ -32,6 +32,11 @@
                 </div>
             </div>
         </div>
+    <?php elseif ($_SESSION['user']['role'] == 'petugas'): ?>
+        <div class="dashboard-title">
+            <h1 class="poppins-semibold">Dashboard Petugas</h1>
+            <p class="poppins-regular">Kelola koreksi ujian, cek hasil siswa, dan publish nilai dari sini.</p>
+        </div>
     <?php else: ?>
         <div class="dashboard-title">
             <h1 class="poppins-semibold">Dashboard Admin</h1>
@@ -78,6 +83,16 @@
                 </div>
                 <div class="stats-icon icon-blue">
                     <i class="ph ph-files"></i>
+                </div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-info">
+                    <p class="stats-label">KOREKSI UJIAN</p>
+                    <h2 class="stats-number">Buka</h2>
+                    <a href="<?= Constant::DIRNAME ?>koreksi" class="btn-lihat-ujian" style="margin-top: 0.75rem;">Buka Koreksi</a>
+                </div>
+                <div class="stats-icon icon-blue">
+                    <i class="ph ph-pencil-simple"></i>
                 </div>
             </div>
         <?php endif; ?>
@@ -159,6 +174,30 @@
 
     <?php if ($_SESSION['user']['role'] == 'siswa' || $_SESSION['user']['role'] == 'petugas'): ?>
         <div class="dashboard-bottom-content">
+            <?php if ($_SESSION['user']['role'] == 'petugas'): ?>
+                <div class="dashboard-upcoming-exam">
+                    <div class="upcoming-exam-header">
+                        <h2>Koreksi Ujian</h2>
+                        <a href="<?= Constant::DIRNAME ?>koreksi" class="btn-lihat-semua">Buka Koreksi</a>
+                    </div>
+                    <div class="upcoming-exam-list">
+                        <div class="exam-card">
+                            <div class="exam-icon"><i class="ph ph-note-pencil" style="color: var(--color-primary);"></i></div>
+                            <div class="exam-info">
+                                <h4>Ujian Matematika</h4>
+                                <p>28 jawaban menunggu koreksi • XII IPA 1</p>
+                            </div>
+                        </div>
+                        <div class="exam-card">
+                            <div class="exam-icon"><i class="ph ph-note-pencil" style="color: var(--color-primary);"></i></div>
+                            <div class="exam-info">
+                                <h4>Ujian Bahasa</h4>
+                                <p>15 jawaban menunggu publish • XII IPS 2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
             <div class="dashboard-upcoming-exam">
                 <div class="upcoming-exam-header">
                     <h2>Ujian Hari Ini</h2>

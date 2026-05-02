@@ -16,6 +16,12 @@
                 <i class="ph ph-house" style="font-size: 20px;"></i>
                 <p class="poppins-regular" style="font-size: 14px;">Dashboard</p>
             </a>
+            <?php if ($_SESSION['user']['role'] == "petugas" || $_SESSION['user']['role'] == "admin"): ?>
+                <a href="<?= Constant::DIRNAME ?>koreksi" class="menu <?= $data["title"] == "Koreksi" ? "active" : "" ?>">
+                    <i class="ph ph-file-text" style="font-size: 20px;"></i>
+                    <p class="poppins-regular" style="font-size: 14px;">Koreksi</p>
+                </a>
+            <?php endif; ?>
             <?php if ($_SESSION['user']['role'] == "admin"): ?>
                 <a href="<?= Constant::DIRNAME ?>ujian" class="menu <?= $data["title"] == "Ujian" ? "active" : "" ?>">
                     <i class="ph ph-clipboard-text" style="font-size: 20px;"></i>
