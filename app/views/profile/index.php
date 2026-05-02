@@ -1,7 +1,7 @@
 <main class="profile-container">
     <header class="profile-header">
         <h1>Profile Saya</h1>
-        <p>Kelola informasi akun dan kata sandi kamu.</p>
+        <p>Kelola informasi akun dan kata sandimu.</p>
     </header>
 
     <div class="profile-content">

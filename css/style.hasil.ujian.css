@@ -9,7 +9,7 @@
 .hasil-ujian-header h1 {
     font-size: 2rem;
     font-weight: 600;
-    color: #333;
+    color: #1e293b;
     margin-bottom: 5px;
 }
 
@@ -54,7 +54,7 @@
 .hasil-ujian-content .hasil-ujian-info h3 {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #333;
+    color: #1e293b;
     margin: 0;
 }
 
@@ -139,7 +139,7 @@
 .skor-border strong:first-child {
     font-size: 1.6rem;
     font-weight: 800;
-    color: #333;
+    color: #1e293b;
     display: block;
     margin-bottom: -2px;
 }
@@ -168,7 +168,7 @@
 .hasil-ujian-list .hasil-ujian-info h4, .hasil-ujian-pending h4 {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #333;
+    color: #1e293b;
     margin: 4px 0 12px 0;
 }
 

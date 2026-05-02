@@ -24,7 +24,7 @@
         </a>
         <a href="<?= Constant::DIRNAME ?>profile" class="menu <?= $data["title"] == "profile" ? "active" : "" ?>">
             <i class="ph ph-user" style="font-size: 20px;"></i>
-            <p class="poppins-regular" style="font-size: 14px;">Profile</p>
+            <p class="poppins-regular" style="font-size: 14px;">Profile Saya</p>
         </a>
     </section>
     <a href="<?= Constant::DIRNAME ?>login ?>" class="btn-logout">

@@ -150,7 +150,7 @@
 .stats-number {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #333;
+    color: #1e293b;
 }
 
 .stats-icon {
@@ -216,7 +216,7 @@
 .upcoming-exam-header h2 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #333;
+    color: #1e293b;
 }
 
 .upcoming-exam-list {
@@ -275,7 +275,7 @@
 .exam-info h4 {
     font-size: 1.1rem;
     font-weight: 700;
-    color: #333;
+    color: #1e293b;
     margin-bottom: 4px;
 }
 
