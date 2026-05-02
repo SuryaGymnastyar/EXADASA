@@ -5,7 +5,7 @@ class App
 {
 	private string|object $class = "Home", $method = "index";
 	private array $params = [];
-	private array $protected = ['Dashboard', 'Profile', 'Koreksi'];
+	private array $protected = ['Dashboard', 'Profile', 'Koreksi', 'Monitoring'];
 
 	public function __construct()
 	{

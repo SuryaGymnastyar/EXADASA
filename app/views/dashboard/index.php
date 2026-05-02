@@ -85,16 +85,6 @@
                     <i class="ph ph-files"></i>
                 </div>
             </div>
-            <div class="stats-card">
-                <div class="stats-info">
-                    <p class="stats-label">KOREKSI UJIAN</p>
-                    <h2 class="stats-number">Buka</h2>
-                    <a href="<?= Constant::DIRNAME ?>koreksi" class="btn-lihat-ujian" style="margin-top: 0.75rem;">Buka Koreksi</a>
-                </div>
-                <div class="stats-icon icon-blue">
-                    <i class="ph ph-pencil-simple"></i>
-                </div>
-            </div>
         <?php endif; ?>
 
         <?php if ($_SESSION['user']['role'] == 'siswa'): ?>

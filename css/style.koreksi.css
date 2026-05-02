@@ -337,19 +337,21 @@ input, select { font-family: inherit; }
     justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .page-header__title {
-    font-size: 22px;
+    font-size: 1.8rem;
+    font-weight: 600;
     color: var(--color-text);
     letter-spacing: -.3px;
-    line-height: 1.2;
+    line-height: 1.15;
 }
 
 .page-header__subtitle {
-    font-size: 13px;
+    font-size: 0.9rem;
     color: var(--color-muted);
-    margin-top: 4px;
+    margin-top: 6px;
 }
 
 .page-header__actions {

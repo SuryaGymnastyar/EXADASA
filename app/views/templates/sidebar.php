@@ -21,6 +21,10 @@
                     <i class="ph ph-file-text" style="font-size: 20px;"></i>
                     <p class="poppins-regular" style="font-size: 14px;">Koreksi</p>
                 </a>
+                <a href="<?= Constant::DIRNAME ?>monitoring" class="menu <?= $data["title"] == "Monitoring" ? "active" : "" ?>">
+                    <i class="ph ph-eye" style="font-size: 20px;"></i>
+                    <p class="poppins-regular" style="font-size: 14px;">Monitoring</p>
+                </a>
             <?php endif; ?>
             <?php if ($_SESSION['user']['role'] == "admin"): ?>
                 <a href="<?= Constant::DIRNAME ?>ujian" class="menu <?= $data["title"] == "Ujian" ? "active" : "" ?>">
