@@ -17,24 +17,36 @@
                 <p class="poppins-regular" style="font-size: 14px;">Dashboard</p>
             </a>
             <?php if ($_SESSION['user']['role'] == "petugas" || $_SESSION['user']['role'] == "admin"): ?>
-                <a href="<?= Constant::DIRNAME ?>koreksi" class="menu <?= $data["title"] == "Koreksi" ? "active" : "" ?>">
-                    <i class="ph ph-file-text" style="font-size: 20px;"></i>
-                    <p class="poppins-regular" style="font-size: 14px;">Koreksi</p>
-                </a>
-                <a href="<?= Constant::DIRNAME ?>monitoring" class="menu <?= $data["title"] == "Monitoring" ? "active" : "" ?>">
-                    <i class="ph ph-eye" style="font-size: 20px;"></i>
-                    <p class="poppins-regular" style="font-size: 14px;">Monitoring</p>
-                </a>
-            <?php endif; ?>
-            <?php if ($_SESSION['user']['role'] == "admin"): ?>
                 <a href="<?= Constant::DIRNAME ?>ujian" class="menu <?= $data["title"] == "Ujian" ? "active" : "" ?>">
                     <i class="ph ph-clipboard-text" style="font-size: 20px;"></i>
                     <p class="poppins-regular" style="font-size: 14px;">Ujian</p>
                 </a>
             <?php endif; ?>
-
+            <?php if ($_SESSION['user']['role'] == "admin"): ?>
+                <a href="<?= Constant::DIRNAME ?>pengguna" class="menu <?= $data["title"] == "Pengguna" ? "active" : "" ?>">
+                    <i class="ph ph-users" style="font-size: 20px;"></i>
+                    <p class="poppins-regular" style="font-size: 14px;">Pengguna</p>
+                </a>
+                <a href="<?= Constant::DIRNAME ?>pengumuman"
+                    class="menu <?= $data["title"] == "Pengumuman" ? "active" : "" ?>">
+                    <i class="ph ph-megaphone" style="font-size: 20px;"></i>
+                    <p class="poppins-regular" style="font-size: 14px;">Pengumuman</p>
+                </a>
+            <?php endif; ?>
+            <?php if ($_SESSION['user']['role'] == "petugas"): ?>
+                <a href="<?= Constant::DIRNAME ?>koreksi" class="menu <?= $data["title"] == "Koreksi" ? "active" : "" ?>">
+                    <i class="ph ph-file-text" style="font-size: 20px;"></i>
+                    <p class="poppins-regular" style="font-size: 14px;">Koreksi</p>
+                </a>
+                <!-- <a href="<?= Constant::DIRNAME ?>monitoring"
+                    class="menu <?= $data["title"] == "Monitoring" ? "active" : "" ?>">
+                    <i class="ph ph-eye" style="font-size: 20px;"></i>
+                    <p class="poppins-regular" style="font-size: 14px;">Monitoring</p>
+                </a> -->
+            <?php endif; ?>
             <?php if ($_SESSION['user']['role'] == "siswa"): ?>
-                <a href="<?= Constant::DIRNAME ?>ujianSiswa" class="menu <?= $data["title"] == "Ujian Siswa" ? "active" : "" ?>">
+                <a href="<?= Constant::DIRNAME ?>ujianSiswa"
+                    class="menu <?= $data["title"] == "Ujian Siswa" ? "active" : "" ?>">
                     <i class="ph ph-clipboard-text" style="font-size: 20px;"></i>
                     <p class="poppins-regular" style="font-size: 14px;">Ujian Saya</p>
                 </a>
@@ -49,6 +61,20 @@
                 <i class="ph ph-user" style="font-size: 20px;"></i>
                 <p class="poppins-regular" style="font-size: 14px;">Profile</p>
             </a>
+
+            <?php if ($_SESSION['user']['role'] == "admin"): ?>
+                <p class="poppins-medium" style="font-size: 12px; color: var(--color-muted-foreground); margin-top: 20px;">
+                    SISTEM</p>
+                <a href="<?= Constant::DIRNAME ?>pengaturan"
+                    class="menu <?= $data["title"] == "Pengaturan" ? "active" : "" ?>">
+                    <i class="ph ph-gear" style="font-size: 20px;"></i>
+                    <p class="poppins-regular" style="font-size: 14px;">Pengaturan</p>
+                </a>
+                <a href="<?= Constant::DIRNAME ?>log" class="menu <?= $data["title"] == "Log Aktivitas" ? "active" : "" ?>">
+                    <i class="ph ph-megaphone" style="font-size: 20px;"></i>
+                    <p class="poppins-regular" style="font-size: 14px;">Log Aktivitas</p>
+                </a>
+            <?php endif; ?>
         </section>
         <a href="<?= Constant::DIRNAME ?>dashboard/logout" class="btn-logout">
             <i class="ph ph-sign-out" style="font-size: 20px;"></i>

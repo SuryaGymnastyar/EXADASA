@@ -1,0 +1,90 @@
+.pengumuman {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "Poppins", sans-serif;
+  padding-top: 25px;
+  padding-bottom: 30px;
+}
+
+.pengumuman-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pengumuman-title h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.pengumuman-title p {
+  font-size: 0.9rem;
+  color: var(--color-muted-foreground);
+}
+
+.box-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.card {
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 1px 2px 5px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.card .btn-group {
+  display: flex;
+  gap: 5px;
+  margin-left: auto;
+}
+
+.card .icon-title {
+  font-size: 1.5rem;
+  color: #fff;
+  background: var(--color-gradient-primary);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.card-body .info-time {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-muted-foreground);
+  margin-bottom: 10px;
+}
+
+.card-body .title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-body .deskripsi {
+  font-size: 0.9rem;
+  color: var(--color-muted-foreground);
+}
+
+@media (width >= 1024px) {
+  .box-card {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,229 @@
+.pengguna {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "Poppins", sans-serif;
+  padding-top: 25px;
+  padding-bottom: 30px;
+}
+
+.pengguna-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pengguna-title h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.pengguna-title p {
+  font-size: 0.9rem;
+  color: var(--color-muted-foreground);
+}
+
+.card-search {
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 7px 16px;
+  min-width: 180px;
+  width: 700px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.filter-search:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.filter-search i {
+  font-size: 15px;
+  color: var(--color-muted-foreground);
+  flex-shrink: 0;
+}
+
+.filter-search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  color: #000;
+}
+
+.filter-search input::placeholder {
+  color: var(--color-muted-foreground);
+}
+
+.select-wrap {
+  margin-left: auto;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: #f8fafc;
+  border: 1px solid #eaeaea;
+  border-radius: 999px;
+  padding: 7px 34px 7px 15px;
+  font-size: 13px;
+  color: #000;
+  outline: none;
+  cursor: pointer;
+  min-width: 150px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.select-caret {
+  position: absolute;
+  right: 11px;
+  pointer-events: none;
+  font-size: 13px;
+  color: var(--color-muted-foreground);
+}
+
+.ujian-table {
+  overflow: auto;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ujian-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ujian-table th,
+.ujian-table td {
+  padding: 14px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.ujian-table td:nth-child(1) {
+  min-width: 220px;
+}
+
+.ujian-table td:nth-child(1) .info-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-muted-foreground);
+}
+
+.ujian-table td:nth-child(1) .img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-gradient-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+
+.ujian-table td:nth-child(1) .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.4;
+}
+
+.ujian-table td:nth-child(1) .info p {
+  font-size: 0.8rem;
+  color: var(--color-muted-foreground);
+}
+
+.ujian-table td:nth-child(2) {
+  min-width: 80px;
+}
+
+.ujian-table td:nth-child(3) {
+  min-width: 100px;
+}
+
+.ujian-table td:nth-child(3) span {
+  padding: 3px 8px;
+  border-radius: 14px;
+  background: rgba(41, 119, 245, 0.2);
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.ujian-table td:nth-child(4) {
+  min-width: 100px;
+  color: var(--color-muted-foreground);
+}
+
+.ujian-table td:nth-child(5) {
+  min-width: 100px;
+}
+
+.ujian-table td:nth-child(6) {
+  width: auto;
+}
+
+.ujian-table td:nth-child(6) div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ujian-table th {
+  background-color: #f8fafc;
+  color: var(--color-muted-foreground);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.ujian-table tr {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.ujian-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.5);
+}

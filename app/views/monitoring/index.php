@@ -1,5 +1,4 @@
-<div class="page-content container monitoring-container">
-
+<div class="page-content container">
     <div class="page-header">
         <div>
             <h1 class="page-header__title poppins-semibold">Live Monitoring</h1>
@@ -9,7 +8,6 @@
         </div>
     </div>
 
-    <?php if ($_SESSION['user']['role'] == 'petugas' || $_SESSION['user']['role'] == 'admin'): ?>
     <div class="stats-grid">
 
         <div class="stats-card">
@@ -43,19 +41,12 @@
         </div>
 
     </div>
-    <?php endif; ?>
-
-    <div class="live-bar">
-        <span class="live-bar__dot"></span>
-        <span class="live-bar__label poppins-semibold">Live</span>
-        <span class="live-bar__exam poppins-regular">UTS Matematika &bull; XII IPA 1</span>
-    </div>
 
     <?php
     $siswa_monitoring = [
         [
-            'inisial'     => 'AS',
-            'nama'        => 'Andi Saputra',
+            'inisial'     => 'MR',
+            'nama'        => 'M. Rafly Saputra',
             'kelas'       => 'XII IPA 1',
             'status'      => 'online',
             'progress'    => 18,
@@ -64,8 +55,8 @@
             'av'          => 'av-blue',
         ],
         [
-            'inisial'     => 'BC',
-            'nama'        => 'Bunga Citra',
+            'inisial'     => 'MS',
+            'nama'        => 'M. Surya Gymnastyar',
             'kelas'       => 'XII IPA 1',
             'status'      => 'online',
             'progress'    => 25,
@@ -74,8 +65,8 @@
             'av'          => 'av-purple',
         ],
         [
-            'inisial'     => 'CD',
-            'nama'        => 'Citra Dewi',
+            'inisial'     => 'R',
+            'nama'        => 'Rheal',
             'kelas'       => 'XII IPA 1',
             'status'      => 'offline',
             'progress'    => 8,
@@ -84,8 +75,8 @@
             'av'          => 'av-teal',
         ],
         [
-            'inisial'     => 'EP',
-            'nama'        => 'Eka Putri',
+            'inisial'     => 'AA',
+            'nama'        => 'Andhika Akbar',
             'kelas'       => 'XII IPA 1',
             'status'      => 'online',
             'progress'    => 30,

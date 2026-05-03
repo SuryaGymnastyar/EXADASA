@@ -132,7 +132,8 @@
                         <span>R</span>
                     </div>
                     <div>
-                        <h4 class="poppins-medium">Rafly - <span style="color: var(--color-primary); font-weight: 500; font-size: 13px;">Submit</span></h4>
+                        <h4 class="poppins-medium">Rafly - <span
+                                style="color: var(--color-primary); font-weight: 500; font-size: 13px;">Submit</span></h4>
                         <p>UAS Matematika</p>
                     </div>
                     <p class="poppins-regular" style="margin-left: auto;">2026-05-02 08:00</p>
@@ -142,7 +143,8 @@
                         <span>R</span>
                     </div>
                     <div>
-                        <h4 class="poppins-medium">Rafly - <span style="color: var(--color-primary); font-weight: 500; font-size: 13px;">Login</span></h4>
+                        <h4 class="poppins-medium">Rafly - <span
+                                style="color: var(--color-primary); font-weight: 500; font-size: 13px;">Login</span></h4>
                         <p>Masuk ke dashboard</p>
                     </div>
                     <p class="poppins-regular" style="margin-left: auto;">2026-05-02 08:00</p>
@@ -152,42 +154,19 @@
                         <span>R</span>
                     </div>
                     <div>
-                        <h4 class="poppins-medium">Rafly - <span style="color: var(--color-primary); font-weight: 500; font-size: 13px;">Submit</span></h4>
+                        <h4 class="poppins-medium">Rafly - <span
+                                style="color: var(--color-primary); font-weight: 500; font-size: 13px;">Submit</span></h4>
                         <p>UAS IPA</p>
                     </div>
                     <p class="poppins-regular" style="margin-left: auto;">2026-05-02 08:00</p>
                 </div>
-                
+
             </div>
         </div>
     <?php endif; ?>
 
     <?php if ($_SESSION['user']['role'] == 'siswa' || $_SESSION['user']['role'] == 'petugas'): ?>
         <div class="dashboard-bottom-content">
-            <?php if ($_SESSION['user']['role'] == 'petugas'): ?>
-                <div class="dashboard-upcoming-exam">
-                    <div class="upcoming-exam-header">
-                        <h2>Koreksi Ujian</h2>
-                        <a href="<?= Constant::DIRNAME ?>koreksi" class="btn-lihat-semua">Buka Koreksi</a>
-                    </div>
-                    <div class="upcoming-exam-list">
-                        <div class="exam-card">
-                            <div class="exam-icon"><i class="ph ph-note-pencil" style="color: var(--color-primary);"></i></div>
-                            <div class="exam-info">
-                                <h4>Ujian Matematika</h4>
-                                <p>28 jawaban menunggu koreksi • XII IPA 1</p>
-                            </div>
-                        </div>
-                        <div class="exam-card">
-                            <div class="exam-icon"><i class="ph ph-note-pencil" style="color: var(--color-primary);"></i></div>
-                            <div class="exam-info">
-                                <h4>Ujian Bahasa</h4>
-                                <p>15 jawaban menunggu publish • XII IPS 2</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endif; ?>
             <div class="dashboard-upcoming-exam">
                 <div class="upcoming-exam-header">
                     <h2>Ujian Hari Ini</h2>
@@ -246,7 +225,32 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+    <?php endif; ?>
+    <?php if ($_SESSION['user']['role'] == 'petugas'): ?>
+        <div class="dashboard-bottom-content">
+            <div class="dashboard-upcoming-exam">
+                <div class="upcoming-exam-header">
+                    <h2>Koreksi Ujian</h2>
+                    <a href="<?= Constant::DIRNAME ?>koreksi" class="btn-lihat-semua">Buka Koreksi</a>
+                </div>
+                <div class="upcoming-exam-list">
+                    <div class="exam-card">
+                        <div class="exam-icon"><i class="ph ph-note-pencil" style="color: var(--color-primary);"></i></div>
+                        <div class="exam-info">
+                            <h4>Ujian Matematika</h4>
+                            <p>28 jawaban menunggu koreksi • XII IPA 1</p>
+                        </div>
+                    </div>
+                    <div class="exam-card">
+                        <div class="exam-icon"><i class="ph ph-note-pencil" style="color: var(--color-primary);"></i></div>
+                        <div class="exam-info">
+                            <h4>Ujian Bahasa</h4>
+                            <p>15 jawaban menunggu publish • XII IPS 2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     <?php endif; ?>
 </div>
