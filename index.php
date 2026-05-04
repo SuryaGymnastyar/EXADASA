@@ -4,7 +4,7 @@ require_once './app/init.php';
 
 $_SESSION['user'] = [
 	'id' => 1,
-	'username' => 'Rafly',
+	'username' => 'M. Surya Gymnastyar',
 	'role' => 'admin'
 ];
 
