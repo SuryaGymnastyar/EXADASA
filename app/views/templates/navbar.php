@@ -7,11 +7,11 @@
         <i class="ph ph-bell"></i>
         <div class="profil-navbar">
             <div class="title">
-                <h2 class="poppins-semibold"><?=$_SESSION['user']['username']?></h2>
-                <p class="poppins-light"><?=$_SESSION['user']['role']?></p>
+                <h2 class="poppins-semibold"><?= $_SESSION['user']['username'] ?></h2>
+                <p class="poppins-light"><?= $_SESSION['user']['role'] ?></p>
             </div>
             <div class="img" style="background-color: var(--color-primary);">
-                <span class="poppins-semibold" style="margin: auto; color: #fff;"><?=$_SESSION['user']['username'][0]?></span>
+                <span class="poppins-semibold" style="margin: auto; color: #fff;"><?= $_SESSION['user']['username'][0] ?></span>
             </div>
             <!-- <img src="" alt="profil"> -->
         </div>

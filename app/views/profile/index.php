@@ -15,7 +15,7 @@
             </div>
 
             <div class="profile-user">
-                <h2>M. Surya Gymnastyar</h2>
+                <h2>M. Rafly Saputra</h2>
                 <p>XII IPA 6 • Siswa</p>
             </div>
 
@@ -39,15 +39,15 @@
                         <div class="form-group">
                             <div class="form-input">
                                 <label class="poppins-medium">Nama Lengkap</label>
-                                <input type="text" id="name" name="name" class="poppins-regular" value="M. Surya Gymnastyar" required>
+                                <input type="text" id="name" name="name" class="poppins-regular" value="M. Rafly Saputra" required>
                             </div>
                             <div class="form-input">
                                 <label class="poppins-medium">Username</label>
-                                <input type="text" id="username" name="username" class="poppins-regular" value="surya" required>
+                                <input type="text" id="username" name="username" class="poppins-regular" value="rafly" required>
                             </div>
                             <div class="form-input">
                                 <label class="poppins-medium">Email</label>
-                                <input type="email" id="email" name="email" class="poppins-regular" value="surya@smandasa.id" required>
+                                <input type="email" id="email" name="email" class="poppins-regular" value="raflysaputra@gmail.com" required>
                             </div>
                             <div class="form-input">
                                 <label class="poppins-medium">Kelas</label>

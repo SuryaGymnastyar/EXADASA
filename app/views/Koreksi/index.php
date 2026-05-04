@@ -71,7 +71,6 @@
                         ['MR', 'M. Rafly Saputra', 'XII IPA 1', 92, 28, 2, '2026-04-20 09:55', 'published', 'av-blue'],
                         ['MS', 'M. Surya Gymnastyar', 'XII IPA 1', 88, 26, 4, '2026-04-20 09:48', 'published', 'av-purple'],
                         ['R', 'Rheal', 'XII IPS 2', 76, 23, 7, '2026-04-20 09:50', 'corrected', 'av-teal'],
-                        ['AA', 'Andhika Akbar', 'XI IPA 3', null, null, null, '2026-04-20 09:30', 'pending', 'av-orange'],
                         ['EP', 'Eka Putri', 'XII IPA 1', 95, 29, 1, '2026-04-20 09:42', 'published', 'av-green'],
                     ];
                     ?>

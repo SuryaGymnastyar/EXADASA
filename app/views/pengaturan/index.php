@@ -14,7 +14,7 @@
             <div class="form-group">
                 <div class="form-input">
                     <label for="name-sistem" class="poppins-medium">Nama Sistem</label>
-                    <input type="text" id="name-sistem" name="name-sistem" class="poppins-regular" value="EduCBT"
+                    <input type="text" id="name-sistem" name="name-sistem" class="poppins-regular" value="EXADASA"
                         required>
                 </div>
                 <div class="form-input">
@@ -30,7 +30,7 @@
                 <div class="form-input">
                     <label class="poppins-medium">Footer</label>
                     <textarea type="text" id="footer" name="footer"
-                        class="poppins-regular">© 2026 SMANDASA Powered by EduCBT.</textarea>
+                        class="poppins-regular">© 2026 SMANDASA Powered by EXADASA.</textarea>
                 </div>
             </div>
         </section>
@@ -44,28 +44,28 @@
                     <label for="name-sistem" class="poppins-medium">Logo Aplikasi</label>
                     <div class="logo-sistem">
                         <i class="ph ph-building-office" style="all: unset"></i>
-                        <!-- <img src="" alt="Logo EduCBT"> -->
+                        <!-- <img src="" alt="Logo EXADASA"> -->
                     </div>
                     <div class="btn-upload">
                         <i class="ph ph-upload" style="all: unset;"></i>
                         <span>Upload Logo</span>
                         <input type="file" id="name-sistem"
                             style="position: absolute; inset: 0; opacity: 0;" name="name-sistem"
-                            class="poppins-regular" value="EduCBT" required>
+                            class="poppins-regular" value="EXADASA" required>
                     </div>
                 </div>
                 <div class="form-input">
                     <label for="name-sistem" class="poppins-medium">Icon Aplikasi</label>
                     <div class="logo-sistem">
                         <i class="ph ph-building-office" style="all: unset"></i>
-                        <!-- <img src="" alt="Logo EduCBT"> -->
+                        <!-- <img src="" alt="Logo EXADASA"> -->
                     </div>
                     <div class="btn-upload" >
                         <i class="ph ph-upload" style="all: unset;"></i>
                         <span>Upload Icon</span>
                         <input type="file" id="name-sistem"
                             style="position: absolute; inset: 0; opacity: 0;" name="name-sistem"
-                            class="poppins-regular" value="EduCBT" required>
+                            class="poppins-regular" value="EXADASA" required>
                     </div>
                 </div>
                 <div class="form-input">
