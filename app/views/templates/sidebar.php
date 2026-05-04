@@ -4,7 +4,7 @@
             <a href="#hero" style="all: inherit; cursor: pointer;">
                 <i class="ph ph-graduation-cap bg-icon-primary" style="font-size: 20px; color: #fff;"></i>
                 <div class="title-group">
-                    <h1 class="poppins-semibold">EduCBT</h1>
+                    <h1 class="poppins-semibold">EXADASA</h1>
                     <p class="poppins-light">SMART EXAM PLATFORM</p>
                 </div>
             </a>
