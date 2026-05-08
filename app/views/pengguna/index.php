@@ -8,7 +8,7 @@
             <i class="ph ph-plus"></i>
             Tambah pengguna
         </button>
-    </div>
+    </div>    
 
     <div class="card-search">
         <div class="card">
