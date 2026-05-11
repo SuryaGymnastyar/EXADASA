@@ -1,5 +1,5 @@
 <nav>
-    <button style="all: unset; margin-left: 10px;">
+    <button id="btn-sidebar" onclick="handleOpenSidebar(event)" style="all: unset; margin-left: 10px;">
         <i class="ph ph-list" style="font-size: 20px; cursor: pointer;"></i>
     </button>
     <!-- <div class="input-navbar form-input">

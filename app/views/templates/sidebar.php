@@ -1,5 +1,5 @@
 <section class="wrapper">
-    <aside>
+    <aside id="sidebar">
         <header>
             <a href="#hero" style="all: inherit; cursor: pointer;">
                 <i class="ph ph-graduation-cap bg-icon-primary" style="font-size: 20px; color: #fff;"></i>
