@@ -25,6 +25,8 @@ class Register_model
             if ($role == "siswa") {
                 $nisn = htmlspecialchars(stripcslashes($data["nisn"]));
                 $email = htmlspecialchars(stripcslashes($data["email"]));
+                $id_kelas = $data["kelas"];
+                $id_jurusan = $data["jurusan"];
 
                 $this->db->beginTransaction();
                 $this->db->query("INSERT INTO users (username, password, role) VALUES (:username, :password, :role)");
@@ -37,6 +39,12 @@ class Register_model
                 $this->db->bind("nisn", $nisn);
                 $this->db->bind("nama_lengkap", $nama_lengkap);
                 $this->db->bind("email", $email);
+                $this->db->execute();
+
+                $this->db->query("INSERT INTO data_siswa (nisn, id_kelas, id_jurusan) VALUES (:nisn, :id_kelas, :id_jurusan)");
+                $this->db->bind("nisn", $nisn);
+                $this->db->bind("id_kelas", $id_kelas);
+                $this->db->bind("id_jurusan", $id_jurusan);
                 $this->db->execute();
                 $this->db->commit();
 

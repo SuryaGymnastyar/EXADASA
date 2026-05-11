@@ -23,9 +23,13 @@ class Login_model
             if (!password_verify($password, $user["password"]))
                 throw new PDOException("Password salah");
 
+            $userRole = $this->getUserByRole($user["username"], $user["role"]);
+
             $_SESSION["user"] = [
-                "id" => $user["id"],
+                "id" => $user["id_user"],
+                "foto" => $userRole["foto"] ?? null,
                 "username" => $user["username"],
+                "nama_lengkap" => $userRole["nama_lengkap"],
                 "role" => $user["role"]
             ];
             return true;
@@ -42,6 +46,31 @@ class Login_model
             return $this->db->single();
         } catch (PDOException $e) {
             echo $e->getMessage();
+        }
+    }
+
+    public function getUserByRole(string $id_user, string $role)
+    {
+        try {
+            if ($role == 'siswa') {
+                $this->db->query('SELECT foto, nisn as id_user, nama_lengkap, email FROM siswa WHERE nisn = :id_user');
+                $this->db->bind('id_user', $id_user);
+                $this->db->execute();
+                return $this->db->single();
+            } else if ($role == 'petugas') {
+                $this->db->query('SELECT foto, nip as id_user, nama_lengkap, email FROM petugas WHERE nip = :id_user');
+                $this->db->bind('id_user', $id_user);
+                $this->db->execute();
+                return $this->db->single();
+            } else {
+                $this->db->query('SELECT username as nama_lengkap, role FROM users WHERE username = :id_user');
+                $this->db->bind('id_user', $id_user);
+                $this->db->execute();
+                return $this->db->single();
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return null;
         }
     }
 }

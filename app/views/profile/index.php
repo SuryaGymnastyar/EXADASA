@@ -7,28 +7,38 @@
     <div class="profile-content">
         <div class="profile-avatar">
             <div class="avatar-border">
-                <div class="avatar-circle">MS</div>
-                <label for="input-foto" class="upload-icon" style="cursor: pointer;"> 
-                    <i class="ph ph-camera"></i>
-                    <input type="file" id="input-foto" name="foto_profil" accept="image/*" style="display: none;">
-                </label>
+                <?php if (isset($data['user']['foto']) && $data['user']['foto']): ?>
+                    <img src="<?= Constant::DIRNAME ?>asset/img/<?= $data['user']['foto'] ?>" alt="profile"
+                        style="object-fit: contain;" class="avatar-circle">
+                <?php else: ?>
+                    <div class="avatar-circle" style="text-transform: uppercase;"><?= $data['user']['nama_lengkap'][0] ?></div>
+                <?php endif; ?>
+                <?php if ($_SESSION['user']['role'] != 'admin'): ?>
+                    <label for="input-foto" class="upload-icon" style="cursor: pointer;">
+                        <i class="ph ph-camera" title="Ganti Foto"></i>
+                        <input type="file" id="input-foto" name="foto_profil" accept="image/*" style="display: none;">
+                    </label>
+                <?php endif; ?>
             </div>
 
             <div class="profile-user">
-                <h2>M. Rafly Saputra</h2>
-                <p>XII IPA 6 • Siswa</p>
+                <h2><?= $data['user']['nama_lengkap'] ?></h2>
+                <p><?= $_SESSION['user']['role'] == "siswa" ? $data['user']['kelas'] . " " . $data['user']['jurusan'] . " • Siswa" : ($_SESSION['user']['role'] == "petugas" ? "Petugas" : "Admin") ?>
+                </p>
             </div>
+            <?php if ($_SESSION['user']['role'] == 'siswa'): ?>
 
-            <div class="profile-user-info">
-                <div class="info-list">
-                    <strong>3</strong>
-                    <span>Ujian</span>
+                <div class="profile-user-info">
+                    <div class="info-list">
+                        <strong>3</strong>
+                        <span>Ujian</span>
+                    </div>
+                    <div class="info-list">
+                        <strong>87.5</strong>
+                        <span>Rata-Rata Nilai</span>
+                    </div>
                 </div>
-                <div class="info-list">
-                    <strong>87.5</strong>
-                    <span>Rata-Rata Nilai</span>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
 
         <div class="profile-form">
@@ -37,22 +47,32 @@
                     <div class="form-label">
                         <h3>Informasi Akun</h3>
                         <div class="form-group">
-                            <div class="form-input">
-                                <label class="poppins-medium">Nama Lengkap</label>
-                                <input type="text" id="name" name="name" class="poppins-regular" value="M. Rafly Saputra" required>
-                            </div>
+                            <?php if ($_SESSION['user']['role'] != 'admin'): ?>
+                                <div class="form-input">
+                                    <label class="poppins-medium">Nama Lengkap</label>
+                                    <input type="text" id="name" name="name" class="poppins-regular"
+                                        value="<?= $data['user']['nama_lengkap'] ?>" required>
+                                </div>
+                            <?php endif; ?>
                             <div class="form-input">
                                 <label class="poppins-medium">Username</label>
-                                <input type="text" id="username" name="username" class="poppins-regular" value="rafly" required>
+                                <input type="text" id="username" name="username" class="poppins-regular"
+                                    value="<?= $data['user']['username'] ?>" required>
                             </div>
-                            <div class="form-input">
-                                <label class="poppins-medium">Email</label>
-                                <input type="email" id="email" name="email" class="poppins-regular" value="raflysaputra@gmail.com" required>
-                            </div>
-                            <div class="form-input">
-                                <label class="poppins-medium">Kelas</label>
-                                <input type="text" id="kelas" name="kelas" class="poppins-regular" value="XII IPA 6" disabled>
-                            </div>
+                            <?php if ($_SESSION['user']['role'] != 'admin'): ?>
+                                <div class="form-input">
+                                    <label class="poppins-medium">Email</label>
+                                    <input type="email" id="email" name="email" class="poppins-regular"
+                                        value="<?= $data['user']['email'] ?>" required>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($_SESSION['user']['role'] == 'siswa'): ?>
+                                <div class="form-input">
+                                    <label class="poppins-medium">Kelas</label>
+                                    <input type="text" id="kelas" name="kelas" class="poppins-regular"
+                                        value="<?= $data['user']['kelas'] . " " . $data['user']['jurusan'] ?>" disabled>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -63,8 +83,8 @@
                         <div class="form-group">
                             <div class="form-input">
                                 <label class="poppins-medium">Kata Sandi Lama</label>
-                                <input type="password" id="current_password" class="poppins-regular" name="current_password"
-                                    placeholder="Masukkan kata sandi lama">
+                                <input type="password" id="current_password" class="poppins-regular"
+                                    name="current_password" placeholder="Masukkan kata sandi lama">
                             </div>
                             <div class="form-input">
                                 <label class="poppins-medium">Kata Sandi Baru</label>
@@ -73,8 +93,8 @@
                             </div>
                             <div class="form-input">
                                 <label class="poppins-medium">Konfirmasi Kata Sandi Baru</label>
-                                <input type="password" id="confirm_password" class="poppins-regular" name="confirm_password"
-                                    placeholder="Konfirmasi kata sandi baru">
+                                <input type="password" id="confirm_password" class="poppins-regular"
+                                    name="confirm_password" placeholder="Konfirmasi kata sandi baru">
                             </div>
                         </div>
                     </div>
