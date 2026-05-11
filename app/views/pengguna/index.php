@@ -393,8 +393,15 @@
         modalSelectJurusan.addEventListener('change', async function () {
             const id_jurusan = this.value
             modalSelectKelas.disabled = false;
-            const response = await fetch(`<?= Constant::DIRNAME ?>jurusan/getKelasByJurusan/${id_jurusan}`)
-            const data = await response.json()
+            const response = await fetch(`<?= Constant::DIRNAME ?>jurusan/getKelasByJurusan`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id_jurusan })
+            })
+            const data = await response.json();
+
             modalSelectKelas.innerHTML = '';
             if (data.length > 0) {
                 const option1 = document.createElement('option');
@@ -468,10 +475,6 @@
                 input.type = 'password';
                 icon.classList.replace('ph-eye-slash', 'ph-eye');
             }
-        }
-
-        function handleKelas(id_jurusan) {
-            console.log(id_jurusan);
         }
 
         function updateFileName(input) {

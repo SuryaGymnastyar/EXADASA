@@ -1,6 +1,6 @@
 <nav>
-    <button style="all: unset">
-        <i class="ph ph-list"></i>
+    <button style="all: unset; margin-left: 10px;">
+        <i class="ph ph-list" style="font-size: 20px; cursor: pointer;"></i>
     </button>
     <!-- <div class="input-navbar form-input">
         <input type="text" name="search" id="search" placeholder="Cari disini..." style="padding-right: 40px;" class="poppins-regular">

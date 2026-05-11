@@ -42,6 +42,7 @@ class Jurusan extends Controller
         } else {
             Flasher::setFlash('Jurusan gagal ditambahkan', 'error');
         }
+
         header('location: ' . Constant::DIRNAME . 'jurusan');
         exit;
     }
@@ -84,12 +85,14 @@ class Jurusan extends Controller
         exit;
     }
 
-    public function getubah($id)
+    public function getubah()
     {
-        echo json_encode($this->model('Jurusan_model')->getJurusanById($id));
+        $data = json_decode(file_get_contents('php://input'), false);
+        echo json_encode($this->model('Jurusan_model')->getJurusanById($data->id_jurusan));
     }
 
-    public function getKelasByJurusan($id) {
-        echo json_encode($this->model('Jurusan_model')->getKelasByJurusan($id));
+    public function getKelasByJurusan() {
+        $data = json_decode(file_get_contents('php://input'), false);
+        echo json_encode($this->model('Jurusan_model')->getKelasByJurusan($data->id_jurusan));
     }
 }

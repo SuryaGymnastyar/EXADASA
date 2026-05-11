@@ -104,7 +104,7 @@ class Jurusan_model
         }
     }
 
-    public function getKelasByJurusan($id_jurusan)
+    public function getKelasByJurusan(string $id_jurusan)
     {
         try {
             $this->db->query("SELECT * FROM kelas WHERE id_jurusan = :id_jurusan");
