@@ -27,6 +27,10 @@
                     <i class="ph ph-users" style="font-size: 20px;"></i>
                     <p class="poppins-regular" style="font-size: 14px;">Pengguna</p>
                 </a>
+                <a href="<?= Constant::DIRNAME ?>jurusan" class="menu <?= $data["title"] == "Jurusan" ? "active" : "" ?>">
+                    <i class="ph ph-briefcase" style="font-size: 20px;"></i>
+                    <p class="poppins-regular" style="font-size: 14px;">Jurusan</p>
+                </a>
                 <a href="<?= Constant::DIRNAME ?>pengumuman"
                     class="menu <?= $data["title"] == "Pengumuman" ? "active" : "" ?>">
                     <i class="ph ph-megaphone" style="font-size: 20px;"></i>

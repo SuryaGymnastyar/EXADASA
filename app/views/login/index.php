@@ -36,7 +36,7 @@
         </footer>
     </section>
     <section class="container right">
-        <form action="" method="post">
+        <form action="<?= Constant::DIRNAME ?>login/login" method="post">
             <header>
                 <h1 class="poppins-semibold">Selamat Datang Kembali</h1>
                 <p class="poppins-regular">Masukan username dan password anda</p>
@@ -53,9 +53,15 @@
                     <i class="ph ph-eye"></i>
                 </div>
             </section>
-            <a href="" class="poppins-regular"
-                style="font-size: 12px; color: var(--color-primary); width: 100%; text-align: right; text-decoration: none;">Lupa
-                password?</a>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin: 4px 0;">
+                <label for="remember" style="font-size: 13px; display: flex; align-items: center;">
+                    <input type="checkbox" name="remember" id="remember" style="margin-right: 8px; width: 20px;">
+                    Ingat saya
+                </label>
+                <a href="" class="poppins-regular"
+                    style="font-size: 12px; color: var(--color-primary); text-decoration: none;">Lupa
+                    password?</a>
+            </div>
             <button class="btn-primary poppins-semibold" style="width: 100%;">
                 Masuk
             </button>
