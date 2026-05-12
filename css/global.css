@@ -333,7 +333,7 @@ aside .box-menu .menu:hover {
 }
 
 aside .btn-logout {
-  all: inherit;
+  all: unset;
   flex-direction: row;
   display: flex;
   align-items: center;
@@ -354,6 +354,16 @@ aside .btn-logout:hover {
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.active-aside {
+  display: flex !important;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  z-index: 100;
 }
 
 .wrapper main nav {
@@ -482,6 +492,7 @@ aside .btn-logout:hover {
   cursor: not-allowed;
 }
 
+
 .form-input i {
   position: absolute;
   right: 14px;
@@ -549,6 +560,10 @@ aside .btn-logout:hover {
 
   .wrapper aside {
     display: flex;
+  }
+
+  #btn-sidebar {
+    display: none !important;
   }
 
   .wrapper {
