@@ -68,14 +68,14 @@
 
                     <?php
                     $rows = [
-                        ['MR', 'M. Rafly Saputra', 'XII IPA 1', 92, 28, 2, '2026-04-20 09:55', 'published', 'av-blue'],
-                        ['MS', 'M. Surya Gymnastyar', 'XII IPA 1', 88, 26, 4, '2026-04-20 09:48', 'published', 'av-purple'],
-                        ['R', 'Rheal', 'XII IPS 2', 76, 23, 7, '2026-04-20 09:50', 'corrected', 'av-teal'],
-                        ['EP', 'Eka Putri', 'XII IPA 1', 95, 29, 1, '2026-04-20 09:42', 'published', 'av-green'],
+                        [1, 'MR', 'M. Rafly Saputra', 'XII IPA 1', 92, 28, 2, '2026-04-20 09:55', 'published', 'av-blue'],
+                        [2, 'MS', 'M. Surya Gymnastyar', 'XII IPA 1', 88, 26, 4, '2026-04-20 09:48', 'published', 'av-purple'],
+                        [3, 'R', 'Rheal', 'XII IPS 2', 76, 23, 7, '2026-04-20 09:50', 'corrected', 'av-teal'],
+                        [4, 'EP', 'Eka Putri', 'XII IPA 1', 95, 29, 1, '2026-04-20 09:42', 'published', 'av-green'],
                     ];
                     ?>
 
-                    <?php foreach ($rows as [$inisial, $nama, $kelas, $skor, $benar, $salah, $submit, $status, $av]): ?>
+                    <?php foreach ($rows as [$id, $inisial, $nama, $kelas, $skor, $benar, $salah, $submit, $status, $av]): ?>
                         <tr class="data-table__row">
 
                             <td>
@@ -113,9 +113,9 @@
 
                             <td>
                                 <div class="aksi-cell">
-                                    <button class="icon-btn" title="Lihat">
+                                    <a href="<?= Constant::DIRNAME ?>koreksi/detail/<?= $id ?>" class="icon-btn" title="Lihat Detail">
                                         <i class="ph ph-eye"></i>
-                                    </button>
+                                    </a>
                                     <?php if ($status === 'published'): ?>
                                         <button class="icon-btn icon-btn--orange" title="Sembunyikan">
                                             <i class="ph ph-eye-slash"></i>
