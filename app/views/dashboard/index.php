@@ -225,7 +225,7 @@
         <div class="dashboard-bottom-content">
             <div class="dashboard-upcoming-exam">
                 <div class="upcoming-exam-header">
-                    <h2>Ujian Hari Ini</h2>
+                    <h2jian Hari Ini</h2>
                     <a href="#" class="btn-lihat-semua">Lihat Semua</a>
                 </div>
                 <div class="upcoming-exam-list">
