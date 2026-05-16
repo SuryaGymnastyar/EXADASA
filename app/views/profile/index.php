@@ -27,14 +27,13 @@
                 </p>
             </div>
             <?php if ($_SESSION['user']['role'] == 'siswa'): ?>
-
                 <div class="profile-user-info">
                     <div class="info-list">
-                        <strong>3</strong>
+                        <strong><?= $data['stats']['total_ujian'] ?? 0 ?></strong>
                         <span>Ujian</span>
                     </div>
                     <div class="info-list">
-                        <strong>87.5</strong>
+                        <strong><?= number_format($data['stats']['rata_rata'] ?? 0, 1) ?></strong>
                         <span>Rata-Rata Nilai</span>
                     </div>
                 </div>
@@ -43,7 +42,7 @@
 
         <div class="profile-form">
             <div class="form-card">
-                <form action="#" method="POST" enctype="multipart/form-data">
+                <form action="<?= Constant::DIRNAME ?>profile/update" method="POST" enctype="multipart/form-data">
                     <div class="form-label">
                         <h3>Informasi Akun</h3>
                         <div class="form-group">
@@ -100,7 +99,7 @@
                     </div>
 
                     <div class="form-actions">
-                        <button type="button" class="btn-secondary">Batal</button>
+                        <button type="reset" class="btn-secondary">Reset</button>
                         <button type="submit" class="btn-primary">Simpan Perubahan</button>
                     </div>
                 </form>
@@ -108,3 +107,25 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('input-foto').addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.querySelector('.avatar-circle');
+                if (img.tagName === 'IMG') {
+                    img.src = e.target.result;
+                } else {
+                    const newImg = document.createElement('img');
+                    newImg.src = e.target.result;
+                    newImg.className = 'avatar-circle';
+                    newImg.style.objectFit = 'contain';
+                    img.parentNode.replaceChild(newImg, img);
+                }
+            }
+            reader.readAsDataURL(this.files[0]);
+        
+        }
+    });
+</script>

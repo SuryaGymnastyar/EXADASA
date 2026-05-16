@@ -1,6 +1,6 @@
 <?php
 
-class KerjakanUjian extends Controller
+class Kerjakanujian extends Controller
 {
     public function index($id_ujian = null)
     {
@@ -15,26 +15,30 @@ class KerjakanUjian extends Controller
         }
 
         $nisn = $_SESSION['user']['username'];
-        $ujian = $this->model('KerjakanUjian_model')->getUjianById($id_ujian);
+        $model = $this->model('Kerjakanujian_model');
+
+        // 2. Validasi Keberadaan Ujian
+        $ujian = $model->getUjianById($id_ujian);
         if (!$ujian) {
             Flasher::setFlash('Ujian tidak ditemukan.', 'error');
             header('location: ' . Constant::DIRNAME . 'ujianSiswa');
             exit;
         }
 
-        $now    = time();
-        $mulai  = strtotime($ujian['jadwal_mulai']);
+        $now = time();
+        $mulai = strtotime($ujian['jadwal_mulai']);
         $selesai = strtotime($ujian['jadwal_selesai']);
+
         if ($now < $mulai || $now > $selesai) {
             Flasher::setFlash('Ujian tidak tersedia saat ini.', 'error');
             header('location: ' . Constant::DIRNAME . 'ujianSiswa');
             exit;
         }
 
-        $sesiUjian = $this->model('KerjakanUjian_model')->getSesiUjian($id_ujian, $nisn);
+        $sesiUjian = $model->getSesiUjian($id_ujian, $nisn);
         if (!$sesiUjian) {
-            $this->model('KerjakanUjian_model')->buatSesiUjian($id_ujian, $nisn);
-            $sesiUjian = $this->model('KerjakanUjian_model')->getSesiUjian($id_ujian, $nisn);
+            $model->buatSesiUjian($id_ujian, $nisn);
+            $sesiUjian = $model->getSesiUjian($id_ujian, $nisn);
         }
 
         if ($sesiUjian['status'] === 'selesai') {
@@ -43,21 +47,21 @@ class KerjakanUjian extends Controller
             exit;
         }
 
-        $soalList = $this->model('KerjakanUjian_model')->getSoalUjian($id_ujian);
-        $jawabanSiswa = $this->model('KerjakanUjian_model')->getJawabanSiswa($sesiUjian['id_ujian_siswa']);
-        $waktuMasuk  = strtotime($sesiUjian['waktu_masuk']);
+        $soalList = $this->model('Kerjakanujian_model')->getSoalUjian($id_ujian);
+        $jawabanSiswa = $this->model('Kerjakanujian_model')->getJawabanSiswa($sesiUjian['id_ujian_siswa']);
+        $waktuMasuk = strtotime($sesiUjian['waktu_masuk']);
         $durasiDetik = $this->waktuKeDetik($ujian['waktu_pengerjaan']);
-        $batasWaktu  = $waktuMasuk + $durasiDetik;
-        $sisaWaktu   = max(0, $batasWaktu - $now);
+        $batasWaktu = $waktuMasuk + $durasiDetik;
+        $sisaWaktu = max(0, $batasWaktu - $now);
 
-        $data['title']        = 'Kerjakan Ujian';
-        $data['css']          = 'style.kerjakanujian';
-        $data['ujian']        = $ujian;
-        $data['soalList']     = $soalList;
+        $data['title'] = 'Kerjakan Ujian';
+        $data['css'] = 'style.kerjakanujian';
+        $data['ujian'] = $ujian;
+        $data['soalList'] = $soalList;
         $data['jawabanSiswa'] = $jawabanSiswa;
-        $data['sesiUjian']    = $sesiUjian;
-        $data['sisaWaktu']    = $sisaWaktu;
-        $data['totalSoal']    = count($soalList);
+        $data['sesiUjian'] = $sesiUjian;
+        $data['sisaWaktu'] = $sisaWaktu;
+        $data['totalSoal'] = count($soalList);
 
         $this->view('templates/header', $data);
         $this->view('kerjakanujian/index', $data);
@@ -76,8 +80,8 @@ class KerjakanUjian extends Controller
         $body = json_decode(file_get_contents('php://input'), true);
 
         $id_ujian_siswa = $body['id_ujian_siswa'] ?? null;
-        $id_bank_soal   = $body['id_bank_soal']   ?? null;
-        $answer         = $body['answer']          ?? null;
+        $id_bank_soal = $body['id_bank_soal'] ?? null;
+        $answer = $body['answer'] ?? null;
 
         if (!$id_ujian_siswa || !$id_bank_soal || !$answer) {
             echo json_encode(['success' => false, 'message' => 'Data tidak lengkap']);
@@ -90,8 +94,8 @@ class KerjakanUjian extends Controller
             exit;
         }
 
-        $result = $this->model('KerjakanUjian_model')->simpanJawaban($id_ujian_siswa, $id_bank_soal, $answer);
-        echo json_encode(['success' => (bool)$result]);
+        $result = $this->model('Kerjakanujian_model')->simpanJawaban($id_ujian_siswa, $id_bank_soal, $answer);
+        echo json_encode(['success' => (bool) $result]);
         exit;
     }
 
@@ -104,21 +108,30 @@ class KerjakanUjian extends Controller
             exit;
         }
 
-        $body           = json_decode(file_get_contents('php://input'), true);
+        $body = json_decode(file_get_contents('php://input'), true);
         $id_ujian_siswa = $body['id_ujian_siswa'] ?? null;
-        $id_ujian       = $body['id_ujian']       ?? null;
+        $id_ujian = $body['id_ujian'] ?? null;
 
         if (!$id_ujian_siswa || !$id_ujian) {
             echo json_encode(['success' => false, 'message' => 'Data tidak lengkap']);
             exit;
         }
 
-        $nisn  = $_SESSION['user']['username'];
-        $this->model('KerjakanUjian_model')->selesaikanUjian($id_ujian_siswa);
-        $ujian = $this->model('KerjakanUjian_model')->getUjianById($id_ujian);
-        if ($ujian && strtolower($ujian['penilaian']) === 'otomatis') {
-            $this->model('KerjakanUjian_model')->hitungNilaiOtomatis($id_ujian, $id_ujian_siswa, $nisn);
+        $nisn = $_SESSION['user']['username'];
+        $sesi = $this->model('Kerjakanujian_model')->getSesiById($id_ujian_siswa);
+        if ($sesi && $sesi['status'] === 'selesai') {
+            echo json_encode(['success' => true]);
+            exit;
         }
+
+        $this->model('Kerjakanujian_model')->selesaikanUjian($id_ujian_siswa);
+        $ujian = $this->model('Kerjakanujian_model')->getUjianById($id_ujian);
+        if ($ujian && strtolower($ujian['penilaian']) === 'otomatis') {
+            $this->model('Kerjakanujian_model')->hitungNilaiOtomatis($id_ujian, $id_ujian_siswa, $nisn);
+        }
+
+        $namaUjian = is_array($ujian) ? ($ujian['nama_ujian'] ?? $id_ujian) : $id_ujian;
+        $this->model('Dashboard_model')->insertLog($nisn, 'Submit ujian: ' . $namaUjian);
 
         echo json_encode(['success' => true]);
         exit;
@@ -127,6 +140,6 @@ class KerjakanUjian extends Controller
     private function waktuKeDetik(string $waktu): int
     {
         $parts = explode(':', $waktu);
-        return (int)($parts[0]) * 3600 + (int)($parts[1]) * 60 + (int)($parts[2] ?? 0);
+        return (int) ($parts[0]) * 3600 + (int) ($parts[1]) * 60 + (int) ($parts[2] ?? 0);
     }
 }

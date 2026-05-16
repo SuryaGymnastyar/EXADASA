@@ -12,7 +12,7 @@ class Login_model
     public function login(array $data)
     {
         $username = htmlspecialchars(stripcslashes($data["username"]));
-        $password = htmlspecialchars(stripcslashes($data["password"]));
+        $password = stripcslashes($data["password"]); 
         $remember = $data["remember"];
 
         try {

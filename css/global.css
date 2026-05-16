@@ -451,6 +451,7 @@ aside .btn-logout:hover {
   background: #f8fafc;
   font-size: 0.9rem;
   color: #1e293b;
+  font-family: "Poppins", sans-serif;
   width: 100%;
   transition: all 0.3s;
 }
@@ -460,6 +461,7 @@ aside .btn-logout:hover {
   border-radius: 12px;
   border: 1px solid #e2e8f0;
   background: #f8fafc;
+  font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
   color: #1e293b;
   width: 100%;

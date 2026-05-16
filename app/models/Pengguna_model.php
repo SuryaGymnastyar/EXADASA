@@ -16,8 +16,7 @@ class Pengguna_model
             $this->db->execute();
             return $this->db->resultSet();
         } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
+            return [];
         }
     }
 
@@ -28,8 +27,7 @@ class Pengguna_model
             $this->db->execute();
             return $this->db->resultSet();
         } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
+            return [];
         }
     }
 
@@ -40,8 +38,7 @@ class Pengguna_model
             $this->db->execute();
             return $this->db->resultSet();
         } catch (PDOException $e) {
-            echo $e->getMessage();
-            return false;
+            return [];
         }
     }
 

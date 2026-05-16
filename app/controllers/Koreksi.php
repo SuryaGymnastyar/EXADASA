@@ -1,12 +1,14 @@
 <?php
 
-class Koreksi extends Controller {
-    public function index() {
-        if(!$_SESSION['user']['role'] == "petugas") {
+class Koreksi extends Controller
+{
+    public function index()
+    {
+        if ($_SESSION['user']['role'] !== "petugas") {
             header('location: ' . Constant::DIRNAME . 'dashboard');
             exit;
         }
-        
+
         $data["title"] = "Koreksi";
         $data["css"] = "style.koreksi";
         $this->view('templates/header', $data);
@@ -16,22 +18,23 @@ class Koreksi extends Controller {
         $this->view('templates/footer');
     }
 
-    public function detail($id = null) {
-        if(!$_SESSION['user']['role'] == "petugas") {
+    public function detail($id = null)
+    {
+        if ($_SESSION['user']['role'] !== "petugas") {
             header('location: ' . Constant::DIRNAME . 'dashboard');
             exit;
         }
 
-        if($id === null) {
+        if ($id === null) {
             header('location: ' . Constant::DIRNAME . 'koreksi');
             exit;
         }
-        
+
         $data["title"] = "Koreksi";
         $data["css"] = "style.koreksi.detail";
         $data["student_id"] = $id;
 
-        
+
         $data["student"] = [
             'nama' => 'M. Rafly Saputra',
             'kelas' => 'XII IPA 1',
@@ -43,7 +46,7 @@ class Koreksi extends Controller {
             'av' => 'av-blue',
         ];
 
-    
+
         $data["questions"] = [
             [
                 'no' => 1,
@@ -97,7 +100,7 @@ class Koreksi extends Controller {
             ],
             [
                 'no' => 6,
-                'soal' => 'Jika sin α = 3/5 dan α berada di kuadran I, maka nilai cos α adalah...',
+                'soal' => 'Jika sin α = 3/5 and α berada di kuadran I, maka nilai cos α adalah...',
                 'opsi' => ['A' => '4/5', 'B' => '3/4', 'C' => '5/4', 'D' => '5/3'],
                 'jawaban_siswa' => 'B',
                 'kunci' => 'A',

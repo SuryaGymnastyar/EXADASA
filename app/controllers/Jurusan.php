@@ -38,6 +38,8 @@ class Jurusan extends Controller
         ];
 
         if ($this->model('Jurusan_model')->tambahJurusan($data) > 0) {
+            $pengguna = $_SESSION['user']['username'];
+            $this->model('Dashboard_model')->insertLog($pengguna, 'Menambah jurusan: ' . $data['nama_jurusan']);
             Flasher::setFlash('Jurusan berhasil ditambahkan', 'success');
         } else {
             Flasher::setFlash('Jurusan gagal ditambahkan', 'error');
@@ -61,6 +63,8 @@ class Jurusan extends Controller
         ];
 
         if ($this->model('Jurusan_model')->updateJurusan($data) > 0) {
+            $pengguna = $_SESSION['user']['username'];
+            $this->model('Dashboard_model')->insertLog($pengguna, 'Mengubah jurusan: ' . $data['nama_jurusan']);
             Flasher::setFlash('Jurusan berhasil diubah', 'success');
         } else {
             Flasher::setFlash('Jurusan gagal diubah', 'error');
@@ -77,6 +81,8 @@ class Jurusan extends Controller
         }
 
         if ($this->model('Jurusan_model')->hapusJurusan($id) > 0) {
+            $pengguna = $_SESSION['user']['username'];
+            $this->model('Dashboard_model')->insertLog($pengguna, 'Menghapus jurusan (ID: ' . $id . ')');
             Flasher::setFlash('Jurusan berhasil dihapus', 'success');
         } else {
             Flasher::setFlash('Jurusan gagal dihapus', 'error');

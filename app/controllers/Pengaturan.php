@@ -4,7 +4,7 @@ class Pengaturan extends Controller
 {
     public function index()
     {
-        if (!$_SESSION['user']['role'] == "admin") {
+        if ($_SESSION['user']['role'] !== "admin") {
             header('location: ' . Constant::DIRNAME . 'dashboard');
             exit;
         }

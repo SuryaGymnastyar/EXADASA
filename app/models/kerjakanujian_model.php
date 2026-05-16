@@ -1,6 +1,6 @@
 <?php
 
-class KerjakanUjian_model
+class Kerjakanujian_model
 {
     private $db;
 
@@ -16,7 +16,18 @@ class KerjakanUjian_model
             $this->db->bind('id_ujian', $id_ujian);
             return $this->db->single();
         } catch (PDOException $e) {
-            return false;
+            return null;
+        }
+    }
+
+    public function getSesiById(string $id_ujian_siswa)
+    {
+        try {
+            $this->db->query('SELECT * FROM ujian_siswa WHERE id_ujian_siswa = :id LIMIT 1');
+            $this->db->bind('id', $id_ujian_siswa);
+            return $this->db->single();
+        } catch (PDOException $e) {
+            return null;
         }
     }
 
@@ -28,7 +39,7 @@ class KerjakanUjian_model
             $this->db->bind('nisn', $nisn);
             return $this->db->single();
         } catch (PDOException $e) {
-            return false;
+            return null;
         }
     }
 
@@ -43,7 +54,7 @@ class KerjakanUjian_model
             $this->db->execute();
             return $id;
         } catch (PDOException $e) {
-            return false;
+            return null;
         }
     }
 
@@ -128,16 +139,22 @@ class KerjakanUjian_model
             $benar = 0;
             $salah = 0;
             $totalPoint = 0;
+            $maxPoint = 0;
 
             foreach ($soalList as $soal) {
+                $points = (int) $soal['point'];
+                $maxPoint += $points;
+                
                 $jawab = $jawabanMap[$soal['id_bank_soal']] ?? null;
                 if ($jawab !== null && $jawab === $soal['kunci']) {
                     $benar++;
-                    $totalPoint += (int)$soal['point'];
+                    $totalPoint += $points;
                 } else {
                     $salah++;
                 }
             }
+
+            $nilaiFinal = ($maxPoint > 0) ? round(($totalPoint / $maxPoint) * 100, 2) : 0;
 
             $id_nilai = uniqid('ns_', true);
             $this->db->query(
@@ -146,18 +163,20 @@ class KerjakanUjian_model
                  ON DUPLICATE KEY UPDATE
                     total_benar = :benar2, total_salah = :salah2, nilai = :nilai2, updated_at = NOW()'
             );
+            
             $this->db->bind('id_nilai', $id_nilai);
             $this->db->bind('id_ujian', $id_ujian);
             $this->db->bind('id_ujian_siswa', $id_ujian_siswa);
             $this->db->bind('nisn', $nisn);
-            $this->db->bind('benar', (string)$benar);
-            $this->db->bind('salah', (string)$salah);
-            $this->db->bind('nilai', (string)$totalPoint);
-            $this->db->bind('benar2', (string)$benar);
-            $this->db->bind('salah2', (string)$salah);
-            $this->db->bind('nilai2', (string)$totalPoint);
+            $this->db->bind('benar', $benar);
+            $this->db->bind('salah', $salah);
+            $this->db->bind('nilai', $nilaiFinal);
+            
+            $this->db->bind('benar2', $benar);
+            $this->db->bind('salah2', $salah);
+            $this->db->bind('nilai2', $nilaiFinal);
+            
             $this->db->execute();
-
             return true;
         } catch (PDOException $e) {
             return false;

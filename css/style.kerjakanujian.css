@@ -9,6 +9,10 @@ body {
   height: 100dvh;
   overflow: hidden;
   font-family: "Poppins", sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .exam-topbar {
@@ -492,7 +496,7 @@ body {
   border-radius: 20px;
   padding: 36px 32px;
   width: 100%;
-  max-width: 440px;
+  max-width: 500px;
   text-align: center;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
   display: flex;

@@ -1,6 +1,5 @@
 .ujian-container {
     padding: 30px;
-    background-color: #f8fafc;
     min-height: 100vh;
 }
 
@@ -166,6 +165,7 @@
     cursor: pointer;
     font-weight: 600;
     color: #64748b;
+    font-family: 'Poppins', sans-serif;
     transition: 0.3s;
     display: flex;
     align-items: center;

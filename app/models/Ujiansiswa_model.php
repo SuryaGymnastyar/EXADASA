@@ -12,7 +12,7 @@ class UjianSiswa_model
     public function getDataSiswa(string $nisn)
     {
         try {
-            $this->db->query('SELECT ds.id_kelas, ds.id_jurusan FROM data_siswa ds WHERE ds.nisn = :nisn LIMIT 1');
+            $this->db->query('SELECT id_kelas, id_jurusan FROM data_siswa WHERE nisn = :nisn LIMIT 1');
             $this->db->bind('nisn', $nisn);
             return $this->db->single();
         } catch (PDOException $e) {
@@ -29,11 +29,11 @@ class UjianSiswa_model
                      WHERE status = 'aktif'
                        AND (
                            id_kelas IS NULL
-                           OR JSON_CONTAINS(id_kelas, :kelas_json)
+                           OR JSON_CONTAINS(id_kelas, JSON_QUOTE(:id_kelas))
                        )
                      ORDER BY jadwal_mulai ASC"
                 );
-                $this->db->bind('kelas_json', json_encode($id_kelas));
+                $this->db->bind('id_kelas', $id_kelas);
             } else {
                 $this->db->query("SELECT * FROM ujian WHERE status = 'aktif' AND id_kelas IS NULL ORDER BY jadwal_mulai ASC");
             }
@@ -50,20 +50,28 @@ class UjianSiswa_model
             $this->db->bind('id', $id_ujian);
             return $this->db->single();
         } catch (PDOException $e) {
-            return false;
+            return null;
         }
     }
 
     public function getStatusPengerjaanSiswa(string $nisn): array
     {
         try {
-            $this->db->query('SELECT id_ujian, status FROM ujian_siswa WHERE nisn = :nisn');
+            $this->db->query(
+                "SELECT us.id_ujian, us.status, ns.id_nilai_siswa 
+                 FROM ujian_siswa us 
+                 LEFT JOIN nilai_siswa ns ON us.id_ujian_siswa = ns.id_ujian_siswa 
+                 WHERE us.nisn = :nisn"
+            );
             $this->db->bind('nisn', $nisn);
             $rows = $this->db->resultSet();
 
             $map = [];
             foreach ($rows as $row) {
-                $map[$row['id_ujian']] = $row['status'];
+                $map[$row['id_ujian']] = [
+                    'status'    => $row['status'],
+                    'is_scored' => !empty($row['id_nilai_siswa'])
+                ];
             }
             return $map;
         } catch (PDOException $e) {

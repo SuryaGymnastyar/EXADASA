@@ -20,9 +20,11 @@ window.addEventListener('click', (e) => {
     const sidebar = document.getElementById('sidebar');
     const btnSidebar = document.getElementById('btn-sidebar');
     const overlay = document.getElementById('overlay');
-    const trigerBtn = btnSidebar.querySelector('i');
-    if(e.target !== sidebar && !sidebar.contains(e.target) && trigerBtn !== e.target && overlay) {
-        sidebar.classList.remove('active-aside');
-        overlay.remove();
+    if(btnSidebar) {
+        const trigerBtn = btnSidebar.querySelector('i');
+        if(e.target !== sidebar && !sidebar.contains(e.target) && trigerBtn !== e.target && overlay) {
+            sidebar.classList.remove('active-aside');
+            overlay.remove();
+        }
     }
 });

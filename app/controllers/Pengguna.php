@@ -4,7 +4,7 @@ class Pengguna extends Controller
 {
     public function index()
     {
-        if (!$_SESSION['user']['role'] == "admin") {
+        if ($_SESSION['user']['role'] !== "admin") {
             header('location: ' . Constant::DIRNAME . 'dashboard');
             exit;
         }
@@ -62,6 +62,8 @@ class Pengguna extends Controller
 
 
         if ($this->model('Register_model')->register($data)) {
+            $pengguna = $_SESSION['user']['username'];
+            $this->model('Dashboard_model')->insertLog($pengguna, 'Mendaftarkan pengguna baru: ' . $data['username']);
             Flasher::setFlash('Pengguna berhasil ditambahkan', 'success');
             header('location: ' . Constant::DIRNAME . 'pengguna');
             exit;

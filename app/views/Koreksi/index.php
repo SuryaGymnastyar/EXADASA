@@ -113,7 +113,8 @@
 
                             <td>
                                 <div class="aksi-cell">
-                                    <a href="<?= Constant::DIRNAME ?>koreksi/detail/<?= $id ?>" class="icon-btn" title="Lihat Detail">
+                                    <a href="<?= Constant::DIRNAME ?>koreksi/detail/<?= $id ?>" class="icon-btn"
+                                        title="Lihat Detail">
                                         <i class="ph ph-eye"></i>
                                     </a>
                                     <?php if ($status === 'published'): ?>

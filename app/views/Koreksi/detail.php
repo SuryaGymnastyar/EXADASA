@@ -94,7 +94,8 @@ $persentase = $data['persentase'];
             </div>
             <div class="score-summary__detail">
                 <span class="score-summary__label poppins-regular">Skor</span>
-                <span class="score-summary__value poppins-bold"><?= $skorTotal ?> / <?= $skorMax ?> <small class="poppins-regular">(<?= $persentase ?>%)</small></span>
+                <span class="score-summary__value poppins-bold"><?= $skorTotal ?> / <?= $skorMax ?> <small
+                        class="poppins-regular">(<?= $persentase ?>%)</small></span>
             </div>
         </div>
     </div>
@@ -110,60 +111,63 @@ $persentase = $data['persentase'];
         </div>
 
         <?php foreach ($questions as $q): ?>
-        <div class="question-card" data-status="<?= $q['status'] ?>">
-            <div class="question-card__header">
-                <div class="question-card__number">
-                    <span class="q-number poppins-bold"><?= $q['no'] ?></span>
-                    <span class="q-type q-type--pg poppins-medium">Pilihan Ganda</span>
-                </div>
-                <div class="question-card__points">
-                    <span class="poppins-medium">Bobot: <?= $q['skor_max'] ?> poin</span>
-                </div>
-            </div>
-
-            <div class="question-card__body">
-                <div class="question-card__soal">
-                    <p class="poppins-regular"><?= $q['soal'] ?></p>
-                </div>
-
-                <div class="pg-answer-section">
-                    <div class="pg-options">
-                        <?php foreach ($q['opsi'] as $huruf => $teks): ?>
-                            <?php
-                            $isSelected = ($q['jawaban_siswa'] === $huruf);
-                            $isCorrect = ($q['kunci'] === $huruf);
-                            $optClass = '';
-                            if ($isSelected && $isCorrect) $optClass = 'pg-opt--correct-selected';
-                            elseif ($isSelected && !$isCorrect) $optClass = 'pg-opt--wrong-selected';
-                            elseif ($isCorrect) $optClass = 'pg-opt--correct';
-                            ?>
-                            <div class="pg-opt <?= $optClass ?> poppins-regular">
-                                <span class="pg-opt__letter poppins-semibold"><?= $huruf ?></span>
-                                <span class="pg-opt__text"><?= $teks ?></span>
-                                <?php if ($isSelected && $isCorrect): ?>
-                                    <i class="ph ph-check-circle pg-opt__icon pg-opt__icon--correct"></i>
-                                <?php elseif ($isSelected && !$isCorrect): ?>
-                                    <i class="ph ph-x-circle pg-opt__icon pg-opt__icon--wrong"></i>
-                                <?php elseif ($isCorrect): ?>
-                                    <i class="ph ph-check pg-opt__icon pg-opt__icon--key"></i>
-                                <?php endif; ?>
-                            </div>
-                        <?php endforeach; ?>
+            <div class="question-card" data-status="<?= $q['status'] ?>">
+                <div class="question-card__header">
+                    <div class="question-card__number">
+                        <span class="q-number poppins-bold"><?= $q['no'] ?></span>
+                        <span class="q-type q-type--pg poppins-medium">Pilihan Ganda</span>
                     </div>
-                    <div class="pg-result <?= $q['status'] === 'benar' ? 'pg-result--correct' : 'pg-result--wrong' ?>">
-                        <?php if ($q['status'] === 'benar'): ?>
-                            <i class="ph ph-check-circle"></i>
-                            <span class="poppins-semibold">Benar</span>
-                            <span class="pg-result__score poppins-bold">+<?= $q['skor'] ?> poin</span>
-                        <?php else: ?>
-                            <i class="ph ph-x-circle"></i>
-                            <span class="poppins-semibold">Salah</span>
-                            <span class="pg-result__score poppins-bold">0 poin</span>
-                        <?php endif; ?>
+                    <div class="question-card__points">
+                        <span class="poppins-medium">Bobot: <?= $q['skor_max'] ?> poin</span>
                     </div>
                 </div>
+
+                <div class="question-card__body">
+                    <div class="question-card__soal">
+                        <p class="poppins-regular"><?= $q['soal'] ?></p>
+                    </div>
+
+                    <div class="pg-answer-section">
+                        <div class="pg-options">
+                            <?php foreach ($q['opsi'] as $huruf => $teks): ?>
+                                <?php
+                                $isSelected = ($q['jawaban_siswa'] === $huruf);
+                                $isCorrect = ($q['kunci'] === $huruf);
+                                $optClass = '';
+                                if ($isSelected && $isCorrect)
+                                    $optClass = 'pg-opt--correct-selected';
+                                elseif ($isSelected && !$isCorrect)
+                                    $optClass = 'pg-opt--wrong-selected';
+                                elseif ($isCorrect)
+                                    $optClass = 'pg-opt--correct';
+                                ?>
+                                <div class="pg-opt <?= $optClass ?> poppins-regular">
+                                    <span class="pg-opt__letter poppins-semibold"><?= $huruf ?></span>
+                                    <span class="pg-opt__text"><?= $teks ?></span>
+                                    <?php if ($isSelected && $isCorrect): ?>
+                                        <i class="ph ph-check-circle pg-opt__icon pg-opt__icon--correct"></i>
+                                    <?php elseif ($isSelected && !$isCorrect): ?>
+                                        <i class="ph ph-x-circle pg-opt__icon pg-opt__icon--wrong"></i>
+                                    <?php elseif ($isCorrect): ?>
+                                        <i class="ph ph-check pg-opt__icon pg-opt__icon--key"></i>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="pg-result <?= $q['status'] === 'benar' ? 'pg-result--correct' : 'pg-result--wrong' ?>">
+                            <?php if ($q['status'] === 'benar'): ?>
+                                <i class="ph ph-check-circle"></i>
+                                <span class="poppins-semibold">Benar</span>
+                                <span class="pg-result__score poppins-bold">+<?= $q['skor'] ?> poin</span>
+                            <?php else: ?>
+                                <i class="ph ph-x-circle"></i>
+                                <span class="poppins-semibold">Salah</span>
+                                <span class="pg-result__score poppins-bold">0 poin</span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
         <?php endforeach; ?>
     </div>
 
@@ -199,4 +203,24 @@ $persentase = $data['persentase'];
     </div>
 </div>
 
-<script src="<?= Constant::DIRNAME ?>js/koreksi.detail.js"></script>
+<script>
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const questionCards = document.querySelectorAll('.question-card');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            tabBtns.forEach(b => b.classList.remove('tab-btn--active'));
+            this.classList.add('tab-btn--active');
+            const filter = this.dataset.filter;
+
+            questionCards.forEach(card => {
+                if (filter === 'all' || card.dataset.status === filter) {
+                    card.style.display = '';
+                    card.style.animation = 'fadeSlideIn 0.3s ease forwards';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>

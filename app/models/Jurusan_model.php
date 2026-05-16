@@ -11,8 +11,12 @@ class Jurusan_model
 
     public function getAllJurusan()
     {
-        $this->db->query("SELECT * FROM jurusan ORDER BY created_at DESC");
-        return $this->db->resultSet();
+        try {
+            $this->db->query("SELECT * FROM jurusan ORDER BY created_at DESC");
+            return $this->db->resultSet();
+        } catch (PDOException $e) {
+            return [];
+        }
     }
 
     public function getJurusanById($id)
@@ -22,7 +26,6 @@ class Jurusan_model
             $this->db->bind("id", $id);
             return $this->db->single();
         } catch (Exception $e) {
-            echo "Error: " . $e->getMessage();
             return null;
         }
     }
@@ -36,6 +39,7 @@ class Jurusan_model
             $deskripsi = htmlspecialchars(trim($data['deskripsi']));
 
             $this->db->beginTransaction();
+            
             $query = "INSERT INTO jurusan (id_jurusan, nama_jurusan, singkatan_jurusan, deskripsi) VALUES (:id_jurusan, :nama_jurusan, :singkatan_jurusan, :deskripsi)";
             $this->db->query($query);
             $this->db->bind("id_jurusan", $id_jurusan);
@@ -56,7 +60,6 @@ class Jurusan_model
             return true;
         } catch (PDOException $e) {
             $this->db->rollBack();
-            echo "Error: " . $e->getMessage();
             return false;
         }
     }
@@ -70,9 +73,9 @@ class Jurusan_model
             $this->db->bind("nama_jurusan", $data['nama_jurusan']);
             $this->db->bind("deskripsi", $data['deskripsi']);
             $this->db->execute();
+
             return $this->db->rowCount();
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
             return false;
         }
     }
@@ -80,12 +83,21 @@ class Jurusan_model
     public function hapusJurusan($id)
     {
         try {
+            $this->db->beginTransaction();
+
+            $this->db->query("DELETE FROM kelas WHERE id_jurusan = :id");
+            $this->db->bind("id", $id);
+            $this->db->execute();
+
             $this->db->query("DELETE FROM jurusan WHERE id_jurusan = :id");
             $this->db->bind("id", $id);
             $this->db->execute();
-            return $this->db->rowCount();
+            $rows = $this->db->rowCount();
+
+            $this->db->commit();
+            return $rows;
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            $this->db->rollBack();
             return false;
         }
     }
@@ -99,7 +111,6 @@ class Jurusan_model
                               GROUP BY j.id_jurusan");
             return $this->db->resultSet();
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
             return [];
         }
     }
@@ -111,7 +122,6 @@ class Jurusan_model
             $this->db->bind("id_jurusan", $id_jurusan);
             return $this->db->resultSet();
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
             return [];
         }
     }

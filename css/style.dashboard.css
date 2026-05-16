@@ -394,7 +394,8 @@
   color: #3b82f6;
 }
 
-.status-berlangsung {
+.status-berlangsung,
+.status-proses {
   background-color: #fff7ed;
   color: #f97316;
 }

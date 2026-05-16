@@ -21,6 +21,10 @@
                     <i class="ph ph-clipboard-text" style="font-size: 20px;"></i>
                     <p class="poppins-regular" style="font-size: 14px;">Ujian</p>
                 </a>
+                <a href="<?= Constant::DIRNAME ?>banksoal" class="menu <?= $data["title"] == "Bank Soal" ? "active" : "" ?>">
+                    <i class="ph ph-database" style="font-size: 20px;"></i>
+                    <p class="poppins-regular" style="font-size: 14px;">Bank Soal</p>
+                </a>
             <?php endif; ?>
             <?php if ($_SESSION['user']['role'] == "admin"): ?>
                 <a href="<?= Constant::DIRNAME ?>pengguna" class="menu <?= $data["title"] == "Pengguna" ? "active" : "" ?>">

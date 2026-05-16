@@ -9,36 +9,51 @@
         <div class="card">
             <div class="filter-search">
                 <i class="ph ph-magnifying-glass"></i>
-                <input type="text" class="poppins-regular" placeholder="Cari Log Aktivitas..." />
+                <input type="text" id="searchLog" class="poppins-regular" placeholder="Cari Log Aktivitas..." />
             </div>
         </div>
     </div>
     <div class="log-table">
-        <table>
+        <table id="logTable">
             <thead>
                 <tr>
                     <th>Aksi</th>
-                    <th>Nama Pengguna</th>
+                    <th>Pengguna</th>
                     <th>Deskripsi</th>
                     <th>Tanggal & Waktu</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        Login
-                    </td>
-                    <td>
-                        Rafly
-                    </td>
-                    <td>
-                        Melakukan login
-                    </td>
-                    <td>
-                        2026-04-30 07:55
-                    </td>
-                </tr>
+                <?php if (empty($data['logs'])): ?>
+                    <tr>
+                        <td colspan="4" style="text-align:center; padding: 24px; color: #64748b;">
+                            Belum ada aktivitas tercatat.
+                        </td>
+                    </tr>
+                <?php else: ?>
+                    <?php foreach ($data['logs'] as $log): ?>
+                        <tr>
+                            <td>
+                                <span class="badge <?= $log['aksi']['class'] ?>">
+                                    <?= $log['aksi']['label'] ?>
+                                </span>
+                            </td>
+                            <td><?= htmlspecialchars($log['pengguna']) ?></td>
+                            <td><?= htmlspecialchars($log['deskripsi']) ?></td>
+                            <td><?= date('Y-m-d H:i', strtotime($log['created_at'])) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
 </div>
+
+<script>
+    document.getElementById('searchLog').addEventListener('input', function () {
+        const q = this.value.toLowerCase();
+        document.querySelectorAll('#logTable tbody tr').forEach(row => {
+            row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+        });
+    });
+</script>

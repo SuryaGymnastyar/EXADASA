@@ -10,10 +10,13 @@ class UjianSiswa extends Controller
         }
 
         $nisn = $_SESSION['user']['username'];
-        $dataSiswa = $this->model('UjianSiswa_model')->getDataSiswa($nisn);
+        $ujianModel = $this->model('UjianSiswa_model');
+        
+        $dataSiswa = $ujianModel->getDataSiswa($nisn);
         $id_kelas  = $dataSiswa['id_kelas'] ?? null;
-        $listUjian = $this->model('UjianSiswa_model')->getUjianUntukSiswa($id_kelas);
-        $statusMap = $this->model('UjianSiswa_model')->getStatusPengerjaanSiswa($nisn);
+        
+        $listUjian = $ujianModel->getUjianUntukSiswa($id_kelas);
+        $statusMap = $ujianModel->getStatusPengerjaanSiswa($nisn);
 
         $data['title']     = 'Ujian Siswa';
         $data['css']       = 'style.ujian.siswa';
@@ -40,12 +43,13 @@ class UjianSiswa extends Controller
         $id_ujian = trim($body['id_ujian'] ?? '');
         $kode     = strtoupper(trim($body['kode'] ?? ''));
 
-        if (!$id_ujian || !$kode) {
-            echo json_encode(['success' => false, 'message' => 'Data tidak lengkap.']);
+        if (!$id_ujian) {
+            echo json_encode(['success' => false, 'message' => 'ID Ujian tidak ditemukan.']);
             exit;
         }
 
-        $ujian = $this->model('UjianSiswa_model')->getUjianById($id_ujian);
+        $model = $this->model('UjianSiswa_model');
+        $ujian = $model->getUjianById($id_ujian);
 
         if (!$ujian) {
             echo json_encode(['success' => false, 'message' => 'Ujian tidak ditemukan.']);
@@ -60,6 +64,7 @@ class UjianSiswa extends Controller
         $now     = time();
         $mulai   = strtotime($ujian['jadwal_mulai']);
         $selesai = strtotime($ujian['jadwal_selesai']);
+
         if ($now < $mulai) {
             echo json_encode(['success' => false, 'message' => 'Ujian belum dimulai.']);
             exit;
@@ -69,9 +74,16 @@ class UjianSiswa extends Controller
             exit;
         }
 
-        if (strtoupper(trim($ujian['kode_ujian'])) !== $kode) {
-            echo json_encode(['success' => false, 'message' => 'Kode ujian salah.']);
-            exit;
+        $dbKode = trim($ujian['kode_ujian'] ?? '');
+        if ($dbKode !== '') {
+            if (!$kode) {
+                echo json_encode(['success' => false, 'message' => 'Kode ujian diperlukan.']);
+                exit;
+            }
+            if (strtoupper($dbKode) !== $kode) {
+                echo json_encode(['success' => false, 'message' => 'Kode ujian salah.']);
+                exit;
+            }
         }
 
         echo json_encode([

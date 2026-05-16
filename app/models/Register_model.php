@@ -13,7 +13,7 @@ class Register_model
     {
         try {
             $username = htmlspecialchars(stripcslashes($data["username"]));
-            $password = htmlspecialchars(stripcslashes($data["password"]));
+            $password = $data["password"]; // Don't escape password
             $nama_lengkap = htmlspecialchars(stripcslashes($data["nama_lengkap"]));
             $role = $data["role"];
 
@@ -78,7 +78,7 @@ class Register_model
                 return $this->db->rowCount();
             }
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            try { $this->db->rollBack(); } catch (Exception $ex) {}
             return false;
         }
     }
@@ -89,7 +89,6 @@ class Register_model
             $this->db->bind("username", $username);
             return $this->db->single();
         } catch (PDOException $e) {
-            echo $e->getMessage();
             return false;
         }
     }

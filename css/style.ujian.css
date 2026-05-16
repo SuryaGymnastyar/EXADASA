@@ -156,4 +156,14 @@
   font-weight: 500;
 }
 
+.inactive {
+  padding: 3px 8px;
+  border-radius: 14px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+
 
